@@ -1,5 +1,7 @@
-*.db
+*.sqlite
 *.pyc
 .*.swp
 .*.swo
+celerybeat-schedule
 venv
+build
