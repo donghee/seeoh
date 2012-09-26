@@ -1,5 +1,5 @@
 Celery
 Flask
 Flask-Tweepy
-sqlalchmy
-celery
+Flask-SQLAlchemy
+pytz
