@@ -1,0 +1,19 @@
+<!doctype html>
+<head>
+<title>Tweets</title>
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700' rel='stylesheet' type='text/css'>
+<link href='/static/temp.css' rel='stylesheet' type='text/css'>
+</head>
+</body>
+<sup id="deg">&deg;C</sup></p>
+<!-- <h2>Design / CSS thanks to <a href=\"http://twitter.com/superhighfives\">superhighfives</a></2></p> -->
+  <ul class=tweets>
+    {% for tweet in tweets %}
+    <li>
+      <h1>
+    {{ tweet.text }}
+  </h1>
+  </li>
+    {% endfor %}
+  </ul>
+</div></body></html>

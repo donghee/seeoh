@@ -1,0 +1,59 @@
+html, body { 
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	height: 100%;
+	overflow: hidden;
+	color: #fff;
+}
+body {
+	font-family: "Rokkitt", Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	background: #ecd078;
+	background: -moz-linear-gradient(top, #ecd078 0%, #c02942 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ecd078), color-stop(100%,#c02942));
+	background: -webkit-linear-gradient(top, #ecd078 0%,#c02942 100%);
+	background: -o-linear-gradient(top, #ecd078 0%,#c02942 100%);
+	background: -ms-linear-gradient(top, #ecd078 0%,#c02942 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecd078', endColorstr='#c02942',GradientType=0 );
+	background: linear-gradient(top, #ecd078 0%,#c02942 100%);
+	background-repeat: no-repeat;
+}
+div.temperature {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 5%;
+	text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+div.temperature h1 {
+	font-size: 2em;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin: 0;
+}
+
+div.temperature h2 {
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin: 0;
+}
+
+a {
+	color: #ECD078;
+}
+
+div.temperature p {
+	margin: 0;
+	font-size: 20em;
+}
+div.temperature p sup {
+	color: #ECD078;
+	font-size: 0.3em;
+	font-weight: 700;
+}
+
