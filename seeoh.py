@@ -30,17 +30,21 @@ celery.config_from_object(celeryconfig)
 def tweet():
   with app.test_request_context() as request:
     now = datetime.datetime.now().strftime("%Y-%m-%dT %H:%M")
-    see = SeeOhClient(_feed='74539')
-    humidity = see.get_humidity()
-    status = tong2_tweepy.api.update_status(u'안녕하세요 통이 입니다. 습도가 %(humidity)s프로네. - %(now)s'% {"humidity":humidity, "now":now})
-    status = dokgi_tweepy.api.update_status(u'안녕하세요 난 독기야~. 습도가 %(humidity)s프로네. 온도가 23도! - %(now)s'% {"humidity":humidity, "now":now})
+    tong2 = SeeOhClient(_feed='74539')
+    tong2_tweepy.api.update_status(u'통이 입니다. 온도는 %(temp)s도, 습도가 %(humidity)s퍼센트, 땅의 수분은 %(moisture)s퍼센트, 밝기는 %(light)s 입니다.  - %(now)s'% 
+        {"temp":tong2.get_temperature(), 
+         "humidity":tong2.get_humidity(), 
+         "moisture":tong2.get_moisture(), 
+         "light":tong2.get_light(),
+         "now":now})
+    dokgi = SeeOhClient(_feed='74540')
+    dokgi_tweepy.api.update_status(u'난 독기야~. 온도: %(temp)s도, 습도: %(humidity)s퍼센트. 땅의 수분: %(moisture)s퍼센트. 밝기: %(light)s. - %(now)s'% 
+        {"temp":dokgi.get_temperature(), 
+         "humidity":dokgi.get_humidity(), 
+         "moisture":dokgi.get_moisture(), 
+         "light":dokgi.get_light(), 
+         "now":now})
   return True
-
-@celery.task
-def update_sensors():
-  see = SeeOhClient(_feed='74539')
-  print see.get_humidity()
-  return
 
 @app.route('/')
 def index():
@@ -55,10 +59,6 @@ def show_tweets():
   print dir(tong2_tweepy.api)
   print dir(tweets[0])
   return render_template('tweets.html', tweets=tweets)
-
-# @app.route('/post/<int:post_id>')
-# def show_post(post_id):
-  # return 'Post %d' % post_id
 
 if __name__ == '__main__':
   app.run(host = '0.0.0.0', debug = True)

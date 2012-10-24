@@ -1,14 +1,14 @@
 #!/usr/bin/python
 
 import urllib
-# import datetime, time
-# import dateutil.parser
-
 import unittest
 
 # _key='Hq_cC9Ff8HGu5he9tkK0H8OCNxSSAKxLV3dYSkcyVU9hND0g' #74540 dogi
 
-feed= '74539'
+# feed= '74539'
+
+TONG2_FEED = "74539"
+DOKGI_FEED = "74540"
  
 class CosmClient:
   url_template = 'http://api.cosm.com/v2/feeds/%s.json?key=%s&amp;timezone=%s' 
@@ -27,8 +27,11 @@ class SeeOhClient:
   TEMPERATURE = 3
 
   def __init__(self, _feed):
-    _key='h6MsqOTg4cofjLLv8oJE3riBbCaSAKxpVVJTUDlTMVladz0g' #74539 tongi
-    self.cosm = CosmClient(_key, _feed, '+1')
+    if _feed == TONG2_FEED:
+      _key='h6MsqOTg4cofjLLv8oJE3riBbCaSAKxpVVJTUDlTMVladz0g' #74539 tongi
+    elif _feed == DOKGI_FEED:
+      _key='Hq_cC9Ff8HGu5he9tkK0H8OCNxSSAKxLV3dYSkcyVU9hND0g' #74540 dogi
+    self.cosm = CosmClient(_key, _feed, '+9')
 
   def read_value(self, sensor_type):
     json = self.cosm.read_json()
@@ -53,16 +56,16 @@ class TestCosmReader(unittest.TestCase):
 
   def test_read_json(self):
     _key='h6MsqOTg4cofjLLv8oJE3riBbCaSAKxpVVJTUDlTMVladz0g' #74539 tongi
-    c = CosmClient(key=_key, feed='74539', timezone='+1')
+    c = CosmClient(key=_key, feed='74539', timezone='+9')
     self.assertTrue('donghee' in c.read_json())
 
 class TestSeeOhCient(unittest.TestCase):
   def test_read_temperature(self):
     c = SeeOhClient(_feed='74539')
-    self.assertTrue(55, c.get_humidity())
-    self.assertTrue(50, c.get_light())
-    self.assertTrue(30, c.get_moisture())
-    self.assertTrue(20, c.get_temperature())
+    self.assertEquals('77', c.get_humidity())
+    self.assertEquals('0', c.get_light())
+    self.assertEquals('74', c.get_moisture())
+    self.assertEquals('28', c.get_temperature())
 
 if __name__ == '__main__':
   unittest.main()
