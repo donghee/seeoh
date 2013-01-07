@@ -38,9 +38,8 @@ def tweet():
          "light":tong2.get_light(),
          "now":now})
     dokgi = SeeOhClient(_feed='74540')
-    dokgi_tweepy.api.update_status(u'난 독기야~. 온도: %(temp)s도, 습도: %(humidity)s퍼센트. 땅의 수분: %(moisture)s퍼센트. 밝기: %(light)s. - %(now)s'% 
+    dokgi_tweepy.api.update_status(u'난 독기야~. 온도: %(temp)s도, 땅의 수분: %(moisture)s퍼센트. 밝기: %(light)s. - %(now)s'% 
         {"temp":dokgi.get_temperature(), 
-         "humidity":dokgi.get_humidity(), 
          "moisture":dokgi.get_moisture(), 
          "light":dokgi.get_light(), 
          "now":now})
