@@ -1,20 +1,19 @@
 # Install
 
-  sudo pip install virtuanenv
-  git clone git@github.com:donghee/seeoh.git
-  cd seeoh
-  virtualenv venv
-  . venv/bin/activate
+    sudo pip install virtuanenv
+    git clone git@github.com:donghee/seeoh.git
+    cd seeoh
+    virtualenv venv
+    . venv/bin/activate
 
-  pip install -r requirements.txt
+    pip install -r requirements.txt
 
 # Execute
 
-  tmux
+    tmux
 
-
-  sh celeryd.sh &
-  python seeoh.py
+    sh celeryd.sh &
+    python seeoh.py
 
 # Tweeter
 
